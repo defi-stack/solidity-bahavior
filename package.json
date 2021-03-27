@@ -1,0 +1,33 @@
+{
+  "name": "solidity-bahavior",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:defi-stack/solidity-bahavior.git",
+  "author": "wiasliaw <leewei48750@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "compile": "hardhat compile",
+    "types-gen": "hardhat typechain",
+    "test": "hardhat test",
+    "clean": "rm -rf _caches/ _artifacts/ _types/"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@typechain/ethers-v5": "^6.0.5",
+    "@typechain/hardhat": "^1.0.1",
+    "@types/chai": "^4.2.15",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^14.14.37",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.3.0",
+    "ethers": "^5.0.32",
+    "hardhat": "^2.1.2",
+    "hardhat-typechain": "^0.3.5",
+    "mocha": "^8.3.2",
+    "ts-generator": "^0.1.1",
+    "ts-node": "^9.1.1",
+    "typechain": "^4.0.3",
+    "typescript": "^4.2.3"
+  }
+}
