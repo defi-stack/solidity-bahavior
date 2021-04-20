@@ -13,7 +13,7 @@ interface IAdvanceStorage {
     function set(uint32) external returns (bool);
 }
 
-contract ERC165AdvanceStorage is ERC165 {
+contract ERC165AdvanceStorage is ERC165, IAdvanceStorage {
     uint32 public data;
 
     function get() public view returns (uint32) {
