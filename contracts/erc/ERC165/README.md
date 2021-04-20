@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is the implementation detail of ERC165, a standard for publish and detect what interfaces a smart contract support.
+This is the implementation detail of ERC165, a standard for publishing and detecting what interfaces a smart contract support.
 
 ## interface
 
@@ -26,7 +26,7 @@ Take `IERC165` for example, the interface ID can be calculate by the `keccak256`
 bytes4(keccak256('supportsInterface(bytes4)'))
 ```
 
-or function selector.
+or function selector
 
 ```solidity
 // 0x01ffc9a7
@@ -62,7 +62,7 @@ contract ERC165Storage {
 }
 ```
 
-We should let `ERC165Storage` inherit interface of `IERC165` and override the `supportsInterface` function.
+We should let `ERC165Storage` inherit the interface of `IERC165` and override the `supportsInterface` function.
 
 ```solidity
 contract ERC165Storage is IERC165 {
@@ -95,7 +95,7 @@ function supportsInterface(bytes4 interfaceId) public override view returns (boo
 
 ### Advance
 
-However, it is annoying that add function signature one by one. To solve the situation, we can calculate an ID which combine all the interface ID. Just XOR them.
+However, it is annoying to add function signature one by one. To solve the situation, we can calculate an ID which combines all the interface IDs. Just XOR them.
 
 ```solidity
 function supportsInterface(bytes4 interfaceId) public override view returns (bool) {
@@ -104,7 +104,7 @@ function supportsInterface(bytes4 interfaceId) public override view returns (boo
 }
 ```
 
-Since Solidity 0.7.2 you can now write `type(interface_declaration).interfaceId`. We can declare the interface which inherited by contract.
+Since Solidity 0.7.2 you can now write `type(interface_declaration).interfaceId` instead of calculate the xor interface ID. We can declare the interface which inherited by contract.
 
 ```solidity
 interface IAdvanceStorage {
@@ -116,7 +116,7 @@ interface IAdvanceStorage {
 After that, the contract can be written to
 
 ```solidity
-contract ERC165AdvanceStorage is ERC165 {
+contract ERC165AdvanceStorage is ERC165, IAdvanceStorage {
     uint32 public data;
 
     function get() public view returns (uint32) {
