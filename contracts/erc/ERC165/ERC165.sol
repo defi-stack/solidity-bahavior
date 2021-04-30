@@ -1,12 +1,10 @@
 pragma solidity >=0.5.0 <0.8.0;
 
-interface IERC165 {
-    function supportsInterface(bytes4 interfaceId) external view returns (bool);
-}
+import "./interface/IERC165.sol";
 
 abstract contract ERC165 is IERC165 {
-    function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
-        return interfaceId == type(IERC165).interfaceId;
+    function supportsInterface(bytes4 interfaceId) public pure virtual override returns (bool) {
+        return interfaceId == this.supportsInterface.selector;
     }
 }
 
@@ -22,9 +20,8 @@ contract ERC165Storage is ERC165 {
         return true;
     }
 
-    function supportsInterface(bytes4 interfaceId) public override view returns (bool) {
-        return
-            interfaceId == this.supportsInterface.selector ||
+    function supportsInterface(bytes4 interfaceId) public override pure returns (bool) {
+        return interfaceId == this.supportsInterface.selector ||
             interfaceId == this.get.selector ||
             interfaceId == this.set.selector;
     }
